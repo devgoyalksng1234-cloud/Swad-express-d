@@ -27,11 +27,15 @@ function cartLines(cart, menu) {
     .filter((item) => cart[item.id])
     .map((item) => ({ item, qty: cart[item.id], lineTotal: priceValue(item.price) * cart[item.id] }));
 }
-
-// The food total: the sum of every line.
 function cartTotal(cart, menu) {
-  return cartLines(cart, menu).reduce((sum, line) => sum + line.lineTotal, 0);
+  let total = 0;
+  for (const item of menu) {
+    const qty = cart[item.id] || 0;
+    total += qty * priceValue(item.price);
+  }
+  return total;
 }
+
 
 // The bill. For now: food total only. (CR2 adds GST to this function.)
 function billSummary(cart, menu) {
