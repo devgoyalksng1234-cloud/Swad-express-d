@@ -1,0 +1,15 @@
+DEMO F1 - THE PLANTED FAIL (paste this to simulate "the AI got the price wrong")
+-----------------------------------------------------------------------------
+File to edit: js/menu.js
+Where: add this line as the LAST dish, just before the line that contains ];
+(also put a comma at the end of the Masala Chaas line above it)
+
+  { id: 13, category: "Thali", name: "Dal Bati Churma", emoji: "🍛", price: "Rs 299" }
+
+Why it fails: the check "Every menu item has a price that starts with ₹" sees "Rs 299".
+Expected red-cross message:
+  "Dal Bati Churma" has the price "Rs 299". Every price must start with the rupee sign ₹ ...
+
+THE FIX (what the AI should give back, or paste this if it misbehaves):
+
+  { id: 13, category: "Thali", name: "Dal Bati Churma", emoji: "🍛", price: "₹299" }

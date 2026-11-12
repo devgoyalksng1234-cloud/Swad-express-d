@@ -1,0 +1,11 @@
+DEMO F2 - Cart: at most 10 portions of one dish
+File to edit: js/cart.js
+Change this line near the top:
+
+  const MAX_PER_DISH = 99;
+
+into:
+
+  const MAX_PER_DISH = 10;
+
+Expected result: all checks stay green. On the live site, the + button stops at 10.

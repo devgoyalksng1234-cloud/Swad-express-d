@@ -1,0 +1,50 @@
+# Runs the Swaad Express checks on every push and every pull request.
+# If the checks pass on the main branch, the site is published to GitHub Pages.
+name: Checks and deploy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:      # lets you press "Run workflow" by hand
+
+permissions:
+  contents: read
+
+jobs:
+  checks:                 # this job name ("checks") is what the release gate looks for
+    name: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run the Swaad Express checks
+        run: node tests/run.js
+
+  deploy:
+    name: deploy to GitHub Pages
+    needs: checks
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Collect the website files
+        run: |
+          mkdir _site
+          cp -r index.html css js _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

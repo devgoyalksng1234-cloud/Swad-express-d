@@ -1,0 +1,13 @@
+DEMO F3 - Payment: a reassurance line from PayKaro
+File to edit: js/payment.js
+Change this line near the top:
+
+  const PAYMENT_NOTE = "";
+
+into:
+
+  const PAYMENT_NOTE = "Payments are processed securely by PayKaro.";
+
+Expected result: all checks stay green. The payment screen shows UPI, Card and the green note.
+Common AI mistake to point out: an AI asked to "improve" the payment screen may delete the Card
+option. The check "The payment screen offers UPI and card" would then turn red.
