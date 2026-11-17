@@ -1,7 +1,7 @@
 // SWAAD EXPRESS CART AND BILL LOGIC
 // The cart is a plain object: { dishId: quantity }.
 
-const MAX_PER_DISH = 99;   // F2 will lower this to 10 (kitchen capacity)
+const MAX_PER_DISH = 10;   // F2 will lower this to 10 (kitchen capacity)
 
 // "₹249" -> 249
 function priceValue(price) {
