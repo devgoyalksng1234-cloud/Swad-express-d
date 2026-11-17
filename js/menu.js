@@ -14,7 +14,8 @@ const MENU = [
   { id: 9,  category: "Snacks",   name: "Chicken Seekh Kebab",   emoji: "🍢", price: "₹259" },
   { id: 10, category: "Snacks",   name: "Paneer Tikka",          emoji: "🧀", price: "₹229" },
   { id: 11, category: "Sweets & Drinks", name: "Gulab Jamun (2 pcs)", emoji: "🍮", price: "₹80" },
-  { id: 12, category: "Sweets & Drinks", name: "Masala Chaas",   emoji: "🥛", price: "₹50"  }
+  { id: 12, category: "Sweets & Drinks", name: "Masala Chaas",   emoji: "🥛", price: "₹50"  },
+  { id: 13, category: "Thali",    name: "Dal Bati Churma",       emoji: "🍛", price: "₹299" }
 ];
 
 if (typeof module !== "undefined") module.exports = MENU;
